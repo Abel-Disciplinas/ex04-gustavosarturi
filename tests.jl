@@ -10,6 +10,11 @@ function tests()
     for i = 1:length(funcoes)
         (f, a, b) = funcoes[i]
         # Seu código aqui
+        x, fx, k = bisseccao(f, a, b, :nada)
+        println("Exemplo $i")
+        println("x = $x")
+        println("fx = $fx")
+        println("k = $k")
     end
 end
 
