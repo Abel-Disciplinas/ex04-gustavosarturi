@@ -1,8 +1,3 @@
-using Plots
-gr(size=(600,400))
-
-include("bisseccao.jl")
-
 function tests()
     funcoes = [ (x -> 2x - 3, 0, 5), #Abel
                 (x -> x^2 - 2, 1, 2), #Abel
@@ -31,7 +26,10 @@ function tests()
         println("x = $x")
         println("f(x) = $fx")
         println("iterações = $k")
-        plot(f, a, b) #Não sei por qual razão, não está plotando...
+        miniter = k
+        methoditer = :bisseccao
+        methodapprox = :bisseccao
+        apfunction = fx
         println()
         
         println("Direita : ")
@@ -39,7 +37,14 @@ function tests()
         println("x = $x")
         println("f(x) = $fx")
         println("iterações = $k")
-        plot(f, a, b) #Não sei por qual razão, não está plotando...
+        if k < miniter
+            miniter = k
+            methoditer = :direita
+        end
+        if fx < apfunction
+            apfunction = fx
+            methodapprox = :direita
+        end
         println()
         
         println("Esquerda :  : ")
@@ -47,7 +52,14 @@ function tests()
         println("x = $x")
         println("f(x) = $fx")
         println("iterações = $k")
-        plot(f, a, b) #Não sei por qual razão, não está plotando...
+        if k < miniter
+            miniter = k
+            methoditer = :esquerda
+        end
+        if fx < apfunction
+            apfunction = fx
+            methodapprox = :esquerda
+        end
         println()
         
         println("Aleatório : ")
@@ -55,7 +67,14 @@ function tests()
         println("x = $x")
         println("f(x) = $fx")
         println("iterações = $k")
-        plot(f, a, b) #Não sei por qual razão, não está plotando...
+        if k < miniter
+            miniter = k
+            methoditer = :aleatorio
+            methodapprox = :aleatorio
+        end
+        if fx < apfunction
+            apfunction = fx
+        end
         println()
         
         println("Falsa Posição : ")
@@ -63,8 +82,23 @@ function tests()
         println("x = $x")
         println("f(x) = $fx")
         println("iterações = $k")
-        plot(f, a, b) #Não sei por qual razão, não está plotando...
+        if k < miniter
+            miniter = k
+            methoditer = :falsa_posicao
+        end
+        if fx < apfunction
+            apfunction = fx
+            methodapprox = :falsa_posicao
+        end
         println()
+                        
+        println("Melhor em relação a iterações : ", methoditer)
+        println("Iterações : ", miniter)
+        
+        println("Melhor em relação a aproximação : ", methodapprox)
+        println("Value : ", apfunction)
+        
+        #Observações: Não consegui utilizar o Plot(f, a, b)
     end
 end
 
