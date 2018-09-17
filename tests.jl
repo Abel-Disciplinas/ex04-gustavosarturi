@@ -97,7 +97,7 @@ function tests()
         
         println("Melhor em relação a aproximação : ", methodapprox)
         println("Value : ", apfunction)
-        
+        println()
         #Observações: Não consegui utilizar o Plot(f, a, b)
     end
 end
