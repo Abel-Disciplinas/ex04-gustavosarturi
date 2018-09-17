@@ -23,7 +23,40 @@ function tests()
     for i = 1:length(funcoes)
         (f, a, b) = funcoes[i]
         println("Exemplo $i")
+        println("Bissecção : ")
         x, fx, k = bisseccao(f, a, b, :bisseccao)
+        println("x = $x")
+        println("f(x) = $fx")
+        println("iterações = $k")
+        plot(f, a, b) #Não sei por qual razão, não está plotando...
+        println()
+        
+        println("Direita : ")
+        x, fx, k = bisseccao(f, a, b, :direita)
+        println("x = $x")
+        println("f(x) = $fx")
+        println("iterações = $k")
+        plot(f, a, b) #Não sei por qual razão, não está plotando...
+        println()
+        
+        println("Esquerda :  : ")
+        x, fx, k = bisseccao(f, a, b, :esquerda)
+        println("x = $x")
+        println("f(x) = $fx")
+        println("iterações = $k")
+        plot(f, a, b) #Não sei por qual razão, não está plotando...
+        println()
+        
+        println("Aleatório : ")
+        x, fx, k = bisseccao(f, a, b, :aleatorio)
+        println("x = $x")
+        println("f(x) = $fx")
+        println("iterações = $k")
+        plot(f, a, b) #Não sei por qual razão, não está plotando...
+        println()
+        
+        println("Falsa Posição : ")
+        x, fx, k = bisseccao(f, a, b, :falsa_posicao)
         println("x = $x")
         println("f(x) = $fx")
         println("iterações = $k")
