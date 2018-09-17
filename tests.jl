@@ -23,6 +23,9 @@ function tests()
     for i = 1:length(funcoes)
         (f, a, b) = funcoes[i]
         println("Exemplo $i")
+        
+        #existe possibilidade de se criar um for com char/sting?
+        
         println("Bissecção : ")
         x, fx, k = bisseccao(f, a, b, :bisseccao)
         println("x = $x")
