@@ -10,13 +10,13 @@ function tests()
                 (x -> x * exp(x) - 1, 0, 1), #Abel
                 (x -> log(x + π), -3, -1), #Gustavo
                 (x -> (x^2 - 1) * sin(4x^2), 0.5, 0.9), #Gustavo
-                (x -> (cos(x))^3 * e^x + 7, 2, 3), #Gustavo
+                (x -> (cos(x))^3 * exp(x) + 7, 2, 3), #Gustavo
                 (x -> 27 * x^2 - 0.5, -1/3, 0), #Leticião
                 (x -> sin(3x) - 2x, 1e-2, 0.5), #Leticião
-                (x -> 3 * e^x - 5, 0, 1), #Leticião
+                (x -> 3 * exp(x) - 5, 0, 1), #Leticião
                 (x -> x^17 + x^9 + x^2018, -1, 1), #Jaque
-                (x -> e^(sin(x))-1, 0, 5), #Jaque
-                (x -> 5 * e^(sin(x)) - 10, 0, 2), #Jaque
+                (x -> exp(sin(x))-1, 0, 5), #Jaque
+                (x -> 5 * exp(sin(x)) - 10, 0, 2), #Jaque
                 (x -> x^4 - 16, 0, 4), #Abel
                 (x -> sin(1/x), 1e-8, 1e-2), #Abel
                 (x -> 2000 * x - 1, 1e-5, 1e-2), #Dida
@@ -30,7 +30,7 @@ function tests()
         method_approx = strategies[1]
         miniter = iter
         apfunction = fx
-        
+
         for k = 2:length(strategies)
             println(strategies[k])
             x, fx, iter = bisseccao(f, a, b, strategies[k])
@@ -47,11 +47,11 @@ function tests()
                 apfunction = fx
                 method_approx = strategies[k]
             end
-        end   
-        
+        end
+
         println("Método com menor iterações : $method_iter, $miniter")
         println("Método com melhor aproximação : $method_approx, $apfunction")
-        println()    
+        println()
     end
 end
 
